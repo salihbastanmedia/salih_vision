@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="tr-TR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VR Ortamı - Salih Baştan</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .video-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+        }
+
+        .video {
+            flex: 1;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+        }
+
+        #inputContainer {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            height: 300px;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        #videoIdInput,
+        #videoQuality {
+            padding: 10px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="inputContainer" style="display: block;">
+        <center>
+        <h3>- Salih Baştan -</h3>
+        </center>
+        <br>
+        <br>
+        <label for="videoIdInput">Video ID:</label>
+        <input type="text" style="outline: none;" id="videoIdInput" placeholder="Video ID girin">
+        <button onclick="getAndShowVideos()">Çalıştır</button>
+    </div>
+
+    <div class="video-container" id="videoContainer">
+        <!-- JavaScript ile videolar buraya eklenecek -->
+    </div>
+
+    <script>
+        function getAndShowVideos() {
+            var videoId = document.getElementById("videoIdInput").value;
+            var inputX = document.getElementById("inputContainer").style.display = "none";
+            
+            var firstVideoHtml = '<iframe src="https://www.youtube.com/embed/' + videoId + '?autoplay=1&controls=1&showinfo=0&autohide=1&vr=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+            var secondVideoHtml = '<iframe src="https://www.youtube.com/embed/' + videoId + '?autoplay=1&controls=1&showinfo=0&autohide=1&vr=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+            var videoContainer = document.getElementById("videoContainer");
+
+            videoContainer.innerHTML = '<div class="video">' + firstVideoHtml + '</div><div class="video">' + secondVideoHtml + '</div>';
+        }
+    </script>
+</body>
+</html> 
